@@ -14,9 +14,9 @@ import java.sql.SQLException;
  * @author ML
  */
 public class DBConnector {
-    private static final String url = "jdbc:mysql://46.101.253.149:3306/useradmin";
-    private static final String username = "doorkeeper";
-    private static final String password = "bank3*andyouarein";
+    private static final String url = "jdbc:mysql://localhost/lego";
+    private static final String username = "root";
+    private static final String password = "master";
 
     private static Connection connection;
 

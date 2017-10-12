@@ -22,6 +22,9 @@ public class UserMapper {
             Connection con = DBConnector.connection();
             String SQL = "INSERT INTO user (email, password, role) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setString( 1, user.getEmail() );
+            ps.setString( 2, user.getPassword() );
+            ps.setString( 3, user.getRole() );
             ps.executeUpdate();
         } catch ( SQLException | ClassNotFoundException ex ) {
             throw new LegoException( ex.getMessage() );
@@ -31,7 +34,7 @@ public class UserMapper {
     public static User login( String email, String password ) throws LegoException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "SELECT id, role FROM user "
+            String SQL = "SELECT role FROM user "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
