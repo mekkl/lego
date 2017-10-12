@@ -12,6 +12,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
+        <form name="login" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="login">
+            Email:<br>
+            <input type="text" name="email" value="someone@nowhere.com">
+            <br>
+            Password:<br>
+            <input type="password" name="password" value="sesam">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        
     </body>
 </html>

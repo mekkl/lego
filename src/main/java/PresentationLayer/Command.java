@@ -19,7 +19,7 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
-        //commands.put( "login", new Login() );
+        commands.put( "login", new Login() );
         //commands.put( "register", new Register() );
     }
 
@@ -29,7 +29,10 @@ abstract class Command {
             initCommands();
         }
         return commands.getOrDefault(commandName, new UnknownCommand() );
+        
     }
 
+    
+    
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) throws LegoException;
 }
