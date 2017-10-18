@@ -5,6 +5,8 @@
  */
 package FunctionLayer.Entities;
 
+import FunctionLayer.LegoException;
+
 
 /**
  *
@@ -15,11 +17,13 @@ public class OrderObject {
     private int id;
     private int length;
     private int width;
+    private int height;
     private String user_email;
 
-    public OrderObject(int length, int width, String user_email) {
+    public OrderObject(int length, int width, int height, String user_email) {
         this.length = length;
         this.width = width;
+        this.height = height;
         this.user_email = user_email;
     }
 
@@ -33,6 +37,10 @@ public class OrderObject {
 
     public int getWidth() {
         return width;
+    }
+    
+    public int getHeight() {
+        return height;
     }
 
     public String getUser_email() {
@@ -50,11 +58,34 @@ public class OrderObject {
     public void setWidth(int width) {
         this.width = width;
     }
+    
+    public void setHeight(int height){
+        this.height = height;
+    }
 
     public void setUser_email(String user_email) {
         this.user_email = user_email;
     }
     
-    
+    public BoM[] getBoM() throws LegoException{
+        BoM[] bom = new BoM[4];
+        
+        Wall wall1 = new Wall(this.height,this.length,1);
+        Wall wall2 = new Wall(this.height,this.width,0);
+        Wall wall3 = new Wall(this.height,this.length,2);
+        Wall wall4 = new Wall(this.height,this.width,0);
+        
+        wall1.create();
+        wall2.create();
+        wall3.create();
+        wall4.create();
+        
+        bom[0] = wall1.getBoM();
+        bom[1] = wall2.getBoM();
+        bom[2] = wall3.getBoM();
+        bom[3] = wall4.getBoM();
+        
+        return bom;
+    }
     
 }

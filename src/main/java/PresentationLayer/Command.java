@@ -20,7 +20,7 @@ abstract class Command {
     private static void initCommands() {
         commands = new HashMap<>();
         commands.put( "login", new Login() );
-        //commands.put( "register", new Register() );
+        commands.put( "order", new Order() );
     }
 
     static Command from( HttpServletRequest request ) {

@@ -19,17 +19,19 @@ public class Test {
     public static void main(String[] args) {
         
         // 
-        Wall wall = new Wall(8,8,1);
+        
         try{
-        wall.create();
+            OrderObject oo = new OrderObject(10,10,5,"kunde@kunde.dk");
+            System.out.println(oo.getBoM()[0].get1x2());
+            System.out.println(oo.getBoM()[0].get2x2());
+            System.out.println(oo.getBoM()[0].get4x2());
+            
         }
         catch(LegoException ex){
             System.out.println(ex.getMessage());
         }
 
-        System.out.println(wall.wallLevel.get(4).getMatList().toString());
         
-        System.out.println(wall);
 
 //        WallLevel wl1 = new WallLevel(1,9,2);
 //        wl1.create();

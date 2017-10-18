@@ -170,8 +170,8 @@ public class WallLevel {
         return size;
     }
     
-    public MaterialCounter getMatList(){
-        MaterialCounter mc = new MaterialCounter();
+    public BoM getBoM() throws LegoException{
+        BoM mc = new BoM();
         Brick currBrick = null;
         
         for (Brick brick : bricks) {

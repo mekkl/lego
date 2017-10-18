@@ -5,8 +5,9 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.Entities.OrderObject;
 import FunctionLayer.Entities.User;
-import FunctionLayer.Facades.LogicFacade;
+import FunctionLayer.Facades.OrderFacade;
 import FunctionLayer.LegoException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,12 +23,17 @@ public class Order extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegoException {
 
         int length = Integer.parseInt(request.getParameter( "length" ));
+        int width = Integer.parseInt(request.getParameter( "width" ));
         int height = Integer.parseInt(request.getParameter( "height" ));
         
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute( "user" );
         
-        return user.getRole() + "page";
+        OrderObject order = OrderFacade.createOrder(length, width, height, user);
+        
+        request.setAttribute("order", order);
+        
+        return "orderpage";
         
     }
     

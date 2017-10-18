@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `lego`.`order` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `length` INT NOT NULL,
   `width` INT NOT NULL,
+  `height` INT NOT NULL,
   `placed` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `shipped` DATETIME NULL DEFAULT NULL,
   `user_email` VARCHAR(45) NOT NULL,
@@ -65,7 +66,7 @@ INSERT INTO user (email,password,role) VALUES
 ('kunde@kunde.dk','kunde','customer'),
 ('ansat@ansat.dk','ansat','employee');
 
-INSERT INTO lego.order (length,width,user_email) VALUES
-(15,15,'kunde@kunde.dk'),
-(7,11,'kunde@kunde.dk'),
-(21,9,'kunde@kunde.dk');
+INSERT INTO lego.order (length,width,height,user_email) VALUES
+(15,15,3,'kunde@kunde.dk'),
+(7,11,4,'kunde@kunde.dk'),
+(21,9,6,'kunde@kunde.dk');

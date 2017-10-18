@@ -23,7 +23,7 @@ public class Wall {
         this.wallLevel = new ArrayList<>();
         this.height = height;
         this.length = length;
-        this.wallFrameObject = wallFrameObject; // <<<<<<< THROW ERROR IF WFO IS != 0-2
+        this.wallFrameObject = wallFrameObject;
     }
     
     public void create() throws LegoException{
@@ -38,6 +38,16 @@ public class Wall {
             wallLevel.add(wl);
         }
 
+    }
+    
+    public BoM getBoM() throws LegoException{
+        BoM bom = new BoM();
+        
+        for (WallLevel wl : this.wallLevel) {
+            bom.merge(wl.getBoM());
+        }   
+        
+        return bom;
     }
 
     @Override

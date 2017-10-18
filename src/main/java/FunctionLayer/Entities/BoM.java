@@ -5,11 +5,13 @@
  */
 package FunctionLayer.Entities;
 
+import FunctionLayer.LegoException;
+
 /**
  *
  * @author Mellem
  */
-public class MaterialCounter {
+public class BoM {
     private int oneByTwo = 0, twoByTwo = 0, FourByTwo = 0;
 
     public int get1x2() {
@@ -48,7 +50,7 @@ public class MaterialCounter {
         this.FourByTwo += toAdd;
     }
     
-    public void autoIncr(int whatToIncr){
+    public void autoIncr(int whatToIncr) throws LegoException{
         switch (whatToIncr) {
             case 4:
                 this.incr4x2();
@@ -59,11 +61,19 @@ public class MaterialCounter {
             case 1:
                 this.incr1x2();
                 break;
+            case 0:
+                break;
             default:
-                // THROW ERROR HERE! <<<<<<<<<<<<<<
+                throw new LegoException(" parameter input can only be 1, 2 or 4  ");
         }
     }
 
+    public void merge( BoM bom ){
+        this.FourByTwo += bom.get4x2();
+        this.twoByTwo += bom.get2x2();
+        this.oneByTwo += bom.get1x2();
+    }
+    
     @Override
     public String toString() {
         return "MaterialCounter{" + "oneByTwo=" + oneByTwo + ", twoByTwo=" + twoByTwo + ", FourByTwo=" + FourByTwo + '}';

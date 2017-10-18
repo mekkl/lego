@@ -16,12 +16,14 @@ import FunctionLayer.LegoException;
  */
 public class OrderFacade {
     
-    public OrderObject createOrder(int length, int width, User user) throws LegoException{
-        OrderObject order = new OrderObject(length,width,user.getEmail());
+    public static OrderObject createOrder(int length, int width, int height, User user) throws LegoException{
+        OrderObject order = new OrderObject(length,width,height,user.getEmail());
         
         OrderMapper.createOrder(order);
         
         return order;
     }
+    
+    
     
 }
