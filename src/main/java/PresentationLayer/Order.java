@@ -5,6 +5,7 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.Entities.BoM;
 import FunctionLayer.Entities.OrderObject;
 import FunctionLayer.Entities.User;
 import FunctionLayer.Facades.OrderFacade;
@@ -30,8 +31,10 @@ public class Order extends Command {
         User user = (User)session.getAttribute( "user" );
         
         OrderObject order = OrderFacade.createOrder(length, width, height, user);
+        BoM[] bom = OrderFacade.viewBoM(order);
         
         request.setAttribute("order", order);
+        request.setAttribute("bom", bom);
         
         return "orderpage";
         

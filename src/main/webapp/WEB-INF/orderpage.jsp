@@ -4,6 +4,7 @@
     Author     : Mellem
 --%>
 
+<%@page import="FunctionLayer.Entities.BoM"%>
 <%@page import="FunctionLayer.Entities.OrderObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,18 +15,22 @@
     </head>
     <body>
         <% OrderObject oo = (OrderObject)request.getAttribute("order"); %>
-        <% int w11 = oo.getBoM()[0].get1x2(); %>
-        <% int w12 = oo.getBoM()[0].get2x2(); %>
-        <% int w14 = oo.getBoM()[0].get4x2(); %>
-        <% int w21 = oo.getBoM()[1].get1x2(); %>
-        <% int w22 = oo.getBoM()[1].get2x2(); %>
-        <% int w24 = oo.getBoM()[1].get4x2(); %>
-        <% int w31 = oo.getBoM()[2].get1x2(); %>
-        <% int w32 = oo.getBoM()[2].get2x2(); %>
-        <% int w34 = oo.getBoM()[2].get4x2(); %>
-        <% int w41 = oo.getBoM()[3].get1x2(); %>
-        <% int w42 = oo.getBoM()[3].get2x2(); %>
-        <% int w44 = oo.getBoM()[3].get4x2(); %>
+        <% BoM[] bom = (BoM[])request.getAttribute("bom"); %>
+        
+        <% int w11 = bom[0].get1x2(); %>
+        <% int w12 = bom[0].get2x2(); %>
+        <% int w14 = bom[0].get4x2(); %>
+        <% int w21 = bom[1].get1x2(); %>
+        <% int w22 = bom[1].get2x2(); %>
+        <% int w24 = bom[1].get4x2(); %>
+        <% int w31 = bom[2].get1x2(); %>
+        <% int w32 = bom[2].get2x2(); %>
+        <% int w34 = bom[2].get4x2(); %>
+        <% int w41 = bom[3].get1x2(); %>
+        <% int w42 = bom[3].get2x2(); %>
+        <% int w44 = bom[3].get4x2(); %>
+        
+        <h1> Order ID: <%= oo.getId() %> </h1>
         
         <table>
             <tr>

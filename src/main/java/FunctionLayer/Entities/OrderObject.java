@@ -18,12 +18,31 @@ public class OrderObject {
     private int length;
     private int width;
     private int height;
+    private String placed;
+    private String shipped;
     private String user_email;
 
     public OrderObject(int length, int width, int height, String user_email) {
         this.length = length;
         this.width = width;
         this.height = height;
+        this.user_email = user_email;
+    }
+    
+    public OrderObject(int length, int width, int height, String placed, String user_email) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.placed = placed;
+        this.user_email = user_email;
+    }
+    
+    public OrderObject(int length, int width, int height, String placed, String shipped, String user_email) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.placed = placed;
+        this.shipped = shipped;
         this.user_email = user_email;
     }
 
@@ -66,6 +85,24 @@ public class OrderObject {
     public void setUser_email(String user_email) {
         this.user_email = user_email;
     }
+
+    public String getPlaced() {
+        return placed;
+    }
+
+    public String getShipped() {
+        return shipped;
+    }
+
+    public void setPlaced(String placed) {
+        this.placed = placed;
+    }
+
+    public void setShipped(String shipped) {
+        this.shipped = shipped;
+    }
+    
+    
     
     public BoM[] getBoM() throws LegoException{
         BoM[] bom = new BoM[4];

@@ -22,20 +22,25 @@ import java.util.List;
  */
 public class OrderMapper {
     
-    public static void createOrder( OrderObject order ) throws LegoException {
+    public static OrderObject createOrder( OrderObject o ) throws LegoException {
         try {
             Connection con = DBConnector.connection();
             String SQL = "INSERT INTO lego.order (length,width,height,user_email) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, Integer.toString(order.getLength()) );
-            ps.setString( 2, Integer.toString(order.getWidth()) );
-            ps.setString( 3, Integer.toString(order.getHeight()) );
-            ps.setString( 4, order.getUser_email() );
+            ps.setString( 1, Integer.toString(o.getLength()) );
+            ps.setString( 2, Integer.toString(o.getWidth()) );
+            ps.setString( 3, Integer.toString(o.getHeight()) );
+            ps.setString( 4, o.getUser_email() );
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
             int id = ids.getInt( 1 );
+            
+            OrderObject order = new OrderObject(o.getLength(),o.getWidth(),o.getHeight(),o.getUser_email());
+
             order.setId( id );
+            
+            return order;
         } catch ( SQLException | ClassNotFoundException ex ) {
             throw new LegoException( ex.getMessage() );
         }
@@ -54,8 +59,10 @@ public class OrderMapper {
                 int length = Integer.parseInt(rs.getString( "length" ));
                 int width = Integer.parseInt(rs.getString( "width" ));
                 int height = Integer.parseInt(rs.getString( "height" ));
+                String placed = (rs.getString("placed"));
+                String shipped = (rs.getString("shipped"));
                 String user_email  = (rs.getString( "user_email" ));
-                OrderObject order = new OrderObject( length, width, height, user_email );
+                OrderObject order = new OrderObject( length, width, height, placed, shipped, user_email );
                 order.setId(id);
                 orders.add(order);
             }
@@ -63,6 +70,10 @@ public class OrderMapper {
         } catch ( ClassNotFoundException | SQLException ex ) {
             throw new LegoException(ex.getMessage());
         }
+    }
+
+    public static void shipOrder(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
