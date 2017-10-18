@@ -13,5 +13,21 @@
     </head>
     <body>
         <h1>Customerpage</h1>
+        
+        <form name="order" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="order">
+            
+            Length:<br>
+            <input type="number" name="length" value="0">
+            <br>
+            Width:<br>
+            <input type="number" name="width" value="0">
+            <br>
+            Height:<br>
+            <input type="number" name="height" value="0">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        
     </body>
 </html>
