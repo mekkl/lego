@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionLayer;
+package FunctionLayer.Entities;
+
+import FunctionLayer.LegoException;
 
 /**
  *
@@ -16,9 +18,14 @@ public class Test {
      */
     public static void main(String[] args) {
         
-        
-        Wall wall = new Wall(8,7,1);
+        // 
+        Wall wall = new Wall(8,8,1);
+        try{
         wall.create();
+        }
+        catch(LegoException ex){
+            System.out.println(ex.getMessage());
+        }
 
         System.out.println(wall.wallLevel.get(4).getMatList().toString());
         

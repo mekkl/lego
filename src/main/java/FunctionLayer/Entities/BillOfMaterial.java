@@ -3,21 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionLayer;
-
-import java.util.ArrayList;
-import java.util.List;
+package FunctionLayer.Entities;
 
 /**
  *
  * @author ML
  */
-public class House {
-    List<Wall> walls;
-    
-    public void House(){
-        walls = new ArrayList<>();
-    }
-    
+public class BillOfMaterial {
     
 }

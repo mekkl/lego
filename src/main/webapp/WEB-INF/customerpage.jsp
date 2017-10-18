@@ -26,8 +26,10 @@
             Height:<br>
             <input type="number" name="height" value="0">
             <br>
-            <input type="submit" value="Submit">
+            
+            <input type="submit" value="Order">
         </form>
+
         
     </body>
 </html>

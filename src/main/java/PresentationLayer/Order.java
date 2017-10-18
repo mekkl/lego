@@ -5,9 +5,12 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.Entities.User;
+import FunctionLayer.Facades.LogicFacade;
 import FunctionLayer.LegoException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,9 +21,13 @@ public class Order extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegoException {
 
-        // 
+        int length = Integer.parseInt(request.getParameter( "length" ));
+        int height = Integer.parseInt(request.getParameter( "height" ));
         
-        return "";
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute( "user" );
+        
+        return user.getRole() + "page";
         
     }
     

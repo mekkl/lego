@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionLayer;
+package FunctionLayer.Entities;
 
+import FunctionLayer.LegoException;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +26,7 @@ public class Wall {
         this.wallFrameObject = wallFrameObject; // <<<<<<< THROW ERROR IF WFO IS != 0-2
     }
     
-    public void create(){
+    public void create() throws LegoException{
         WallLevel wl = new WallLevel(1,this.length,this.wallFrameObject);
         wl.create();
         wallLevel.add(wl);

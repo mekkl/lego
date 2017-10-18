@@ -1,6 +1,8 @@
-package FunctionLayer;
+package FunctionLayer.Facades;
 
 import DataAccessLayer.UserMapper;
+import FunctionLayer.LegoException;
+import FunctionLayer.Entities.User;
 
 /**
  * The purpose of LogicFacade is to...

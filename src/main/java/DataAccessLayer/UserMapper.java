@@ -1,7 +1,7 @@
 package DataAccessLayer;
 
 import FunctionLayer.LegoException;
-import FunctionLayer.User;
+import FunctionLayer.Entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

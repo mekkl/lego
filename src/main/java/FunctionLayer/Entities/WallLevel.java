@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FunctionLayer;
+package FunctionLayer.Entities;
 
+import FunctionLayer.LegoException;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,11 @@ public class WallLevel {
     int length;
     private final int wallFrameObject;
 
-    public WallLevel(int level, int length, int wfo) {
+    public WallLevel(int level, int length, int wfo) throws LegoException {
+        if (wfo < 0 || wfo > 2) throw new LegoException(" wallFrameObject must be bigger than or equal 0 and smaller than 3 ");
+        if ((wfo == 1 || wfo == 2) && length < 8) throw new LegoException(" length of wall with window or door must be longer than 7 ");
+        if ((wfo == 0) && length < 6) throw new LegoException(" length of wall without window or door must be longer than 5 ");
+        
         this.level = level;
         this.bricks = new ArrayList();
         this.length = length;
@@ -27,7 +32,11 @@ public class WallLevel {
         this.underlyingBricks = null;
     }
     
-    public WallLevel(int level, int length, int wfo, ArrayList<Brick> underlyingBricks) {
+    public WallLevel(int level, int length, int wfo, ArrayList<Brick> underlyingBricks) throws LegoException {
+        if (wfo < 0 || wfo > 2) throw new LegoException(" wallFrameObject must be bigger than or equal 0 and smaller than 3 ");
+        if (((wfo == 1 || wfo == 2) && length < 8)) throw new LegoException(" length of wall with window or door must be longer than 7 ");
+        if ((wfo == 0) && length < 6) throw new LegoException(" length of wall without window or door must be longer than 5 ");
+        
         this.level = level;
         this.bricks = new ArrayList();
         this.length = length;

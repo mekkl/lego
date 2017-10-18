@@ -1,8 +1,8 @@
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
+import FunctionLayer.Facades.LogicFacade;
 import FunctionLayer.LegoException;
-import FunctionLayer.User;
+import FunctionLayer.Entities.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
