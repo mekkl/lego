@@ -91,6 +91,7 @@ public class OrderObject {
     }
 
     public String getShipped() {
+        if (this.shipped == null) return "not shipped";
         return shipped;
     }
 

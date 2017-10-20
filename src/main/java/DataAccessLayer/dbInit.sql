@@ -68,5 +68,5 @@ INSERT INTO user (email,password,role) VALUES
 
 INSERT INTO lego.order (length,width,height,user_email) VALUES
 (15,15,3,'kunde@kunde.dk'),
-(7,11,4,'kunde@kunde.dk'),
+(8,11,4,'kunde@kunde.dk'),
 (21,9,6,'kunde@kunde.dk');

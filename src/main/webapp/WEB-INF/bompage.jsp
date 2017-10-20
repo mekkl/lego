@@ -12,6 +12,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <% OrderObject oo = (OrderObject)request.getAttribute("order"); %>
@@ -32,15 +39,17 @@
         
         <h1> Order ID: <%= oo.getId() %> </h1>
         
-        <table>
-            <tr>
-              <th>Type</th>
-              <th>Wall 1</th> 
-              <th>Wall 2</th>
-              <th>Wall 3</th>
-              <th>Wall 4</th>
-              <th>Total</th>
-            </tr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Wall 1</th> 
+                  <th>Wall 2</th>
+                  <th>Wall 3</th>
+                  <th>Wall 4</th>
+                  <th>Total</th>
+                </tr>
+            </thead>
             <tr>
               <td>2x4</td>
               <td> <%= w14 %> </td> 
@@ -67,6 +76,21 @@
             </tr>
         </table>
 
+        <form name="myorders" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="myorders">
+
+            <br>
+            <br>
+            <input type="submit" value="My Orders">
+        </form>
+            
+        <form name="home" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="home">
+
+            <br>
+            <br>
+            <input type="submit" value="Home">
+        </form>
             
     </body>
 </html>

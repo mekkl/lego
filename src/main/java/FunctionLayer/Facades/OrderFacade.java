@@ -10,6 +10,7 @@ import FunctionLayer.Entities.BoM;
 import FunctionLayer.Entities.OrderObject;
 import FunctionLayer.Entities.User;
 import FunctionLayer.LegoException;
+import java.util.List;
 
 /**
  *
@@ -35,9 +36,22 @@ public class OrderFacade {
      *
      * @param order
      * @return
+     * @throws FunctionLayer.LegoException
      */
     public static BoM[] viewBoM(OrderObject order) throws LegoException{
         return order.getBoM();
     }
     
+    
+    public static List<OrderObject> viewOrders(User user) throws LegoException{
+        return OrderMapper.getOrders(user);
+    }
+    
+    public static OrderObject viewOrder(int id) throws LegoException{
+        return OrderMapper.getOrder(id);
+    }
+
+    public static List<OrderObject> viewOrders() throws LegoException{
+        return OrderMapper.getOrders();
+    }
 }

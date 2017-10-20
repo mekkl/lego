@@ -30,6 +30,13 @@
             <input type="submit" value="Order">
         </form>
 
+        <form name="myorders" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="myorders">
+
+            <br>
+            <br>
+            <input type="submit" value="My Orders">
+        </form>
         
     </body>
 </html>

@@ -19,8 +19,9 @@ public class Wall {
     private final int wallFrameObject; // 0 nothing, 1 door, 2 window
     
     
-    public Wall(int height, int length, int wallFrameObject){
+    public Wall(int height, int length, int wallFrameObject) throws LegoException{
         this.wallLevel = new ArrayList<>();
+        if (height < 1) throw new LegoException(" Height of the wall must be higher than 0 ");
         this.height = height;
         this.length = length;
         this.wallFrameObject = wallFrameObject;

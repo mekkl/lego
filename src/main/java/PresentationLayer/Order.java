@@ -36,7 +36,7 @@ public class Order extends Command {
         request.setAttribute("order", order);
         request.setAttribute("bom", bom);
         
-        return "orderpage";
+        return "bompage";
         
     }
     
