@@ -1,8 +1,11 @@
 package PresentationLayer;
 
+import FunctionLayer.Entities.OrderObject;
 import FunctionLayer.Facades.LogicFacade;
 import FunctionLayer.LegoException;
 import FunctionLayer.Entities.User;
+import FunctionLayer.Facades.OrderFacade;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,6 +27,11 @@ public class Login extends Command {
         HttpSession session = request.getSession();
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );
+        
+        if (user.getRole().equals("employee")) {
+            List<OrderObject> orders = OrderFacade.viewOrders();
+            request.setAttribute("orders", orders);
+        }
         
         return user.getRole() + "page";
     }

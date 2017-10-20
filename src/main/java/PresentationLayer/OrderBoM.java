@@ -24,8 +24,7 @@ public class OrderBoM extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegoException {
         
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute( "user" );
-
+        
         String strId = request.getParameter("id");
         int id = Integer.parseInt(strId);
         

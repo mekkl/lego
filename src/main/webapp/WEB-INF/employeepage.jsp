@@ -22,14 +22,16 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>All Orders</h1>
         
         <% List<OrderObject> orders = (List<OrderObject>)request.getAttribute("orders"); %>
+        
+        <h1>All Orders</h1>
         
         <table class="table table-bordered">
             <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Customer</th>
                   <th>Length</th> 
                   <th>Width</th>
                   <th>Height</th>
@@ -40,42 +42,33 @@
             </thead>
             <% for (OrderObject order : orders) { %>
             <tr>
+                
+                    <% request.setAttribute("id", order.getId()); %>
                     <td> <%= order.getId() %> </td>
+                    <td> <%= order.getUser_email() %> </td>
                     <td> <%= order.getLength() %> </td>
                     <td> <%= order.getWidth() %> </td>
                     <td> <%= order.getHeight() %> </td>
                     <td> <%= order.getPlaced() %> </td>
-                    <td> <% if (!order.getShipped().equals("not shipped")) { %>
-                        <%= order.getShipped() %> 
-                        <% } %>
-                    <% else { %>
-                        <form name="ship" action="FrontController" method="POST">
-                            <input type="hidden" name="command" value="ship">
-                            <input type="hidden" name="id" value="<%= order.getId() %>">
-
-                            <input type="submit" value="Ship Order">
-                        </form>
-                        <% } %>
-                    </td>
-                    </td> 
-                <form>
-                    <input type="hidden" name="command" value="orderbom">
-                    <input type="hidden" name="id" value="<%= order.getId() %>">
-                    
-                    <td ><input type="submit" value="View list"> </td>
-                </form>
+                    <% if (!order.getShipped().equals("not shipped")) { %>
+                    <td> <%= order.getShipped() %> </td>
+                    <% } else { %>
+                    <form>
+                        <input type="hidden" name="command" value="ship">
+                        <input type="hidden" name="id" value="<%= order.getId() %>">
+                        
+                        <td > <input type="submit" value="Ship"> </td>
+                    </form>
+                    <% } %>
+                    <form>
+                        <input type="hidden" name="command" value="orderbom">
+                        <input type="hidden" name="id" value="<%= order.getId() %>">
+                        
+                        <td ><input type="submit" value="View list"> </td>
+                    </form>
             </tr>
-
             <% } %>
         </table>
-
-        <form name="home" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="home">
-
-            <br>
-            <br>
-            <input type="submit" value="Home">
-        </form>
         
     </body>
 </html>

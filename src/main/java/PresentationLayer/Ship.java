@@ -17,17 +17,21 @@ import javax.servlet.http.HttpSession;
  *
  * @author ML
  */
-public class AllOrders extends Command{
+public class Ship extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegoException {
         HttpSession session = request.getSession();
         
-        List<OrderObject> orders = OrderFacade.viewOrders();
+        String strId = request.getParameter("id");
+        int id = Integer.parseInt(strId);
         
+        OrderFacade.shipOrder(id);
+        
+        List<OrderObject> orders = OrderFacade.viewOrders();
         request.setAttribute("orders", orders);
         
-        return "allorderspage";
+        return "employeepage";
     }
     
 }

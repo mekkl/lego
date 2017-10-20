@@ -64,9 +64,14 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO user (email,password,role) VALUES 
 ('kunde@kunde.dk','kunde','customer'),
+('fun@kunde.dk','fun','customer'),
+('lege@kunde.dk','lege','customer'),
 ('ansat@ansat.dk','ansat','employee');
 
 INSERT INTO lego.order (length,width,height,user_email) VALUES
 (15,15,3,'kunde@kunde.dk'),
 (8,11,4,'kunde@kunde.dk'),
+(22,8,17,'fun@kunde.dk'),
+(10,7,4,'lege@kunde.dk'),
+(15,25,11,'lege@kunde.dk'),
 (21,9,6,'kunde@kunde.dk');

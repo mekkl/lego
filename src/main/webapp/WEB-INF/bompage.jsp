@@ -4,6 +4,7 @@
     Author     : Mellem
 --%>
 
+<%@page import="FunctionLayer.Entities.User"%>
 <%@page import="FunctionLayer.Entities.BoM"%>
 <%@page import="FunctionLayer.Entities.OrderObject"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +22,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <% User user = (User)request.getSession().getAttribute("user"); %>
         <% OrderObject oo = (OrderObject)request.getAttribute("order"); %>
         <% BoM[] bom = (BoM[])request.getAttribute("bom"); %>
         
@@ -76,6 +78,7 @@
             </tr>
         </table>
 
+        <% if (user.getRole().equals("customer")) { %>
         <form name="myorders" action="FrontController" method="POST">
             <input type="hidden" name="command" value="myorders">
 
@@ -83,6 +86,7 @@
             <br>
             <input type="submit" value="My Orders">
         </form>
+        <% } %>
             
         <form name="home" action="FrontController" method="POST">
             <input type="hidden" name="command" value="home">

@@ -22,25 +22,25 @@ public class WallLevel {
 
     public WallLevel(int level, int length, int wfo) throws LegoException {
         if (wfo < 0 || wfo > 2) throw new LegoException(" wallFrameObject must be bigger than or equal 0 and smaller than 3 ");
-        if ((wfo == 1 || wfo == 2) && length < 8) throw new LegoException(" length of wall with window or door must be longer than 7 ");
-        if ((wfo == 0) && length < 6) throw new LegoException(" length of wall without window or door must be longer than 5 ");
+        if ((wfo == 1 || wfo == 2) && length < 8) throw new LegoException(" length of wall must be longer than 7 ");
+        if ((wfo == 0) && length < 6) throw new LegoException(" width of wall must be longer than 5 ");
         
         this.level = level;
         this.bricks = new ArrayList();
         this.length = length;
-        this.wallFrameObject = wfo; // <<<<<<< THROW ERROR IF WFO IS != 0-2
+        this.wallFrameObject = wfo; 
         this.underlyingBricks = null;
     }
     
     public WallLevel(int level, int length, int wfo, ArrayList<Brick> underlyingBricks) throws LegoException {
         if (wfo < 0 || wfo > 2) throw new LegoException(" wallFrameObject must be bigger than or equal 0 and smaller than 3 ");
-        if (((wfo == 1 || wfo == 2) && length < 8)) throw new LegoException(" length of wall with window or door must be longer than 7 ");
-        if ((wfo == 0) && length < 6) throw new LegoException(" length of wall without window or door must be longer than 5 ");
+        if ((wfo == 1 || wfo == 2) && length < 8) throw new LegoException(" length of wall must be longer than 7 ");
+        if ((wfo == 0) && length < 6) throw new LegoException(" width of wall must be longer than 5 ");
         
         this.level = level;
         this.bricks = new ArrayList();
         this.length = length;
-        this.wallFrameObject = wfo; // <<<<<<< THROW ERROR IF WFO IS != 0-2
+        this.wallFrameObject = wfo; 
         this.underlyingBricks = underlyingBricks;
     }
     

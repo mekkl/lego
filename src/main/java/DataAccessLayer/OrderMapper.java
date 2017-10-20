@@ -99,8 +99,17 @@ public class OrderMapper {
         }
     }
 
-    public static void shipOrder(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void shipOrder(int orderID) throws LegoException{
+        try {
+            int id = orderID;
+            Connection conn = DBConnector.connection();
+            String sql = "UPDATE lego.order SET shipped = CURRENT_TIMESTAMP WHERE id = ?";
+            PreparedStatement userPstmt = conn.prepareStatement(sql);
+            userPstmt.setInt(1, id);
+            userPstmt.executeUpdate();
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LegoException(ex.getMessage());
+        }
     }
 
     public static OrderObject getOrder(int id) throws LegoException{
@@ -121,6 +130,25 @@ public class OrderMapper {
                 OrderObject order = new OrderObject( length, width, height, placed, shipped, user_email );
                 order.setId(id);
                 return order;
+            } else {
+                throw new LegoException(" No order with specified ID ");
+            }
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LegoException(ex.getMessage());
+        }
+    }
+    
+    public static boolean isShipped(int id) throws LegoException{
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "SELECT shipped FROM lego.order " + "WHERE id = ? ";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setInt( 1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if ( rs.next() ) {
+                String shipped = (rs.getString("shipped"));
+                return shipped != null;
             } else {
                 throw new LegoException(" No order with specified ID ");
             }

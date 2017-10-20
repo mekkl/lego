@@ -26,11 +26,9 @@ public class OrderFacade {
         return order;
     }
     
-//    public static OrderObject shipOrder(int id){
-//        OrderMapper.shipOrder(id);
-//        
-//        
-//    }
+    public static void shipOrder(int id) throws LegoException{
+        if (!OrderMapper.isShipped(id)) OrderMapper.shipOrder(id);
+    }
     
     /**
      *

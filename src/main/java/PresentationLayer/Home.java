@@ -5,8 +5,11 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.Entities.OrderObject;
 import FunctionLayer.Entities.User;
+import FunctionLayer.Facades.OrderFacade;
 import FunctionLayer.LegoException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,6 +25,11 @@ public class Home extends Command {
         
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute( "user" );
+        
+        if (user.getRole().equals("employee")) {
+            List<OrderObject> orders = OrderFacade.viewOrders();
+            request.setAttribute("orders", orders);
+        }
         
         return user.getRole() + "page";
     }
